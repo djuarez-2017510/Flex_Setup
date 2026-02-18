@@ -1,3 +1,45 @@
+## Laboratorio 1 - Problema 2: Analizador Léxico (Daniel Juárez)
+
+Esta sección documenta la solución al Ejercicio 2 del Laboratorio 1
+
+### Archivos del Proyecto
+Estos archivos se encuentran en la carpeta `workspace/examples/`:
+* **`lab1.l`**: Archivo de especificación Flex (Código fuente del lexer).
+* **`prueba.c`**: Archivo de entrada con código de prueba (C/Java style) para validar los tokens.
+
+### Instrucciones de Ejecución
+
+Dentro del contenedor Docker (`docker compose exec flex bash`):
+
+1.  **Navegar al directorio:**
+    ```bash
+    cd /workspace/examples
+    ```
+
+2.  **Generar el código C (Lexer):**
+    ```bash
+    flex lab1.l
+    ```
+
+3.  **Compilar el ejecutable:**
+    ```bash
+    gcc lex.yy.c -o scanner
+    ```
+
+4.  **Ejecutar la prueba:**
+    ```bash
+    ./scanner prueba.c
+    ```
+
+### Ejemplo de Salida
+Al ejecutar el comando, se mostrará la lista de tokens identificados:
+```text
+Linea 1: TOKEN [LIT_FLOAT] -> Valor: 3.14159
+Linea 2: TOKEN [LIT_HEX] -> Valor: 0xFF
+Linea 3: TOKEN [LIT_STRING] -> Valor: "Hola Mundo"
+
+
+
 # Flex Docker Environment
 
 Docker environment for [flex](https://github.com/westes/flex) (Fast Lexical Analyzer) built from source.
@@ -135,3 +177,7 @@ Token(LPAREN, '(', line=1, pos=8)
 -   Generated files (`lex.yy.c`, `scanner`) are excluded from git
 -   Only commit your `.l` source files
 -   The container includes `gcc` for compiling the generated C code
+
+
+
+
